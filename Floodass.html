@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Assessment of the impact of extreme precipitation on PV industry
+    </title>
+    <link rel="stylesheet" href="css/Page Margins.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/font.css" />
+    <link rel="stylesheet" href="css/background.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+
+      .content-section {
+        display: flex;
+        gap: 100px;
+        margin: 10px, 0;
+      }
+
+      .content-section img {
+        max-width: auto;
+        height: 75%;
+        border-radius: 0px;
+        margin-top: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      p {
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="../index.html">Homepage</a>
+      <a href="../services.html">News</a>
+      <a href="../Research.html">Project</a>
+      <a href="../Resume.html">Resume</a>
+      <a href="../services.html">Contact</a>
+    </nav>
+
+    <h1>Introduction</h1>
+    <div class="content-section">
+      <pre class="custom-text">
+     Photovoltaic power generation can use sufficient sunshine resources to 
+     obtain electricity without the need for additional fuel input. It has the 
+     advantages of low operating costs, flexible deployment, and environmental 
+     friendliness. In Japan, photovoltaic power generation can not only reduce 
+     the high carbon emissions brought by the energy industry but also make up 
+     for its lack of resources. However, frequent natural disasters such as 
+     typhoons and heavy rainfall have also had an impact on the development of 
+     the photovoltaic industry that cannot be ignored.
+     
+     Currently, Experts and practitioners have tried various methods to 
+     identify potential candidates by analyzing indicators such as 
+     socio-economic, geographical environment, and hazard factors. Although 
+     this method takes into account the risks of natural disasters while 
+     considering economic and environmental benefits, it is still relatively 
+     vague and it is difficult to accurately and intuitively reflect the 
+     exposure and vulnerability levels of these candidates. Enhance，we are 
+     trying to adpapt a new method combining the Hydro-dynamics model with GIS 
+     sytem, estimated the damage to PV caused by heavy rain.
+    </pre
+      >
+      <img
+        src="img/Risk.png"
+        style="width: 450px; height: 350px; margin-top: 210px"
+      />
+    </div>
+    <a
+      style="margin-left: 70%"
+      href="https://www.meti.go.jp/policy/safety_security/industrial_safety/oshirase/2019/10/20191031.html
+"
+      >METI, Japan</a
+    >
+    <h1>Preparation</h1>
+    <div class="content-section">
+      <div>
+        <p class="custom-text">
+          In the first period, we collected the all the PV location from the
+          official website, and selet all the station with an efficiency higher
+          than 1MV, as well as other data like slope and DEM. Then, we
+          innovatively proposed the method introducing a hydraulic model to
+          analyze flood risks in photovoltaic power plants
+        </p>
+      </div>
+      <div>
+        <img src="img/PVloc+info.png" />
+      </div>
+    </div>
+    <div>
+      <img
+        src="img/田原光伏.png"
+        style="width: 500px; height: auto; margin-top: -200px"
+      />
+      <img
+        src="img/气象厅.png"
+        style="
+          width: 450px;
+          height: auto;
+          margin-top: -240px;
+          padding-left: 125px;
+        "
+      />
+    </div>
+    <p style="margin-left: 7.5%">
+      Solar Power station at Tahara City,Google Earth
+    </p>
+    <h1>RRI Model</h1>
+    <div class="content-section">
+      <p class="custom-text">
+        The Rainfall-Runoff-Inundation (RRI) model is a numerical hydraulic tool
+        designed to simulate various hydrologic processes, including
+        rainfall-runoff dynamics, streamflow discharge, and floodplain
+        inundation, in an integrated manner. Furthermore, RRI plays a crucial
+        role in assessing future scenarios, such as the impacts of climate
+        change. Its compatibility with GIS system further enhances the accuracy
+        of simulations, making it a valuable tool for hydrological and
+        climate-related studies.<br />
+        In this topic, we initially admapt to adopt the maximum precipitation in
+        Aichi Prefecture, predicting the damage to the local photovoltaic
+        industry and estimate the economic losses.
+        <a href="https://www.pwri.go.jp/icharm/research/rri/index.html"
+          >Rainfall-Runoff-Inundation (RRI) model, ICHARM</a
+        >
+      </p>
+      <img src="/img/rri.png" style="width: 45%; height: auto" />
+    </div>
+    <h1>Evaulate of Economic Lose</h1>
+    <div class="content-section">
+      <p class="custom-text">
+        RTF is an indicator proposed as the resource occupancy to capacity
+        ratio, the most significant feature is to compare the occupancy rate of
+        a kind of resource on each person to its whole amount. In this study, we
+        are going to use RTF evaluate PV's lose caused by the flood hazard.Then
+        we will consider the utilization for Climate model to predict the future
+        trend of solar power in Janpan.
+        <br />References:<br />
+        [1] Dem, P., Hayashi, K.,Fujii, M., Tao, L., 2024. Resources time
+        footprint indicator extension for evaluating human interventions in
+        provisioning ecosystem services supply. Science of The Total Environment
+        946, 173852.https://doi.org/10.1016/j.scitotenv.2024.173852 <br />
+        [2] Tao, L., Hayashi, K., Shiraki, H., Huang, X., Dem, P., 2024.
+        Exploration of determinants underlying regional disparity in rooftop
+        photovoltaic adoption: A case study in Nagoya, Japan. Applied Energy
+        367, 123469. https://doi.org/10.1016/j.apenergy.2024.123469
+      </p>
+      <img src="/img/RTF.jpg" style="width: 60%; height: 45%" />
+    </div>
+  </body>
+</html>

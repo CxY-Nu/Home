@@ -1,0 +1,14 @@
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    align-self: center; /* 小屏幕居中 */
+  }
+
+  .card-image {
+    max-width: 100%;
+  }
+
+  .header h1 {
+    font-size: 32px; /* 缩小标题字体 */
+  }
+}

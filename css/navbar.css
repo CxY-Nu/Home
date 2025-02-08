@@ -1,0 +1,32 @@
+/* 导航栏的样式 */
+.navbar {
+  background: linear-gradient(
+    45deg,
+    #e4f1fc,
+    #6db7fc,
+    #9ff5ee93
+  ); /* 背景颜色 */
+  overflow: hidden; /* 清除浮动 */
+  display: flex; /* 使用 Flexbox 布局 */
+  justify-content: space-around; /* 菜单项间隔均匀 */
+  align-items: center; /* 垂直居中 */
+  padding: 2.5px 20px; /* 内边距 */
+  position: sticky; /* 使导航栏固定 */
+  top: 0; /* 固定在顶部 */
+  z-index: 1000; /* 确保导航栏在其他内容之上 */
+}
+/* 导航链接样式 */
+.navbar a {
+  text-decoration: none; /* 去掉超链接下划线 */
+  color: white; /* 文字颜色 */
+  padding: 10px 15px; /* 内边距 */
+  font-size: 16px; /* 字体大小 */
+  transition: background-color 0.3s; /* 平滑过渡效果 */
+}
+
+/* 鼠标悬停效果 */
+.navbar a:hover {
+  background-color: #20f5c0; /* 悬停背景颜色 */
+  border-radius: 5px; /* 增加圆角 */
+  opacity: 50%; /*不透明度*/
+}

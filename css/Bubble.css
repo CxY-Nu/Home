@@ -1,0 +1,31 @@
+/* 气泡容器，确保不覆盖内容 */
+.bubble-container {
+  position: fixed; /* 固定在页面上 */
+  top: 0;
+  left: 0;
+  width: 100%; /* 宽度覆盖整个页面 */
+  height: 100%; /* 高度覆盖整个页面 */
+  pointer-events: none; /* 允许用户点击穿透 */
+  z-index: -1; /* 放在内容的底层 */
+}
+
+/* 气泡样式 */
+.bubble {
+  position: absolute;
+  bottom: -100px; /* 从页面底部开始动画 */
+  border-radius: 50%;
+  opacity: 0.7; /* 半透明 */
+  animation: float 10s linear infinite;
+}
+
+/* 气泡的漂浮动画 */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-100vh); /* 向上漂浮到视口外 */
+    opacity: 0; /* 渐隐 */
+  }
+}

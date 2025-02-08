@@ -1,0 +1,6 @@
+body {
+  background-image: url("../img/kivotos.png");
+  background-size: 100% auto;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}

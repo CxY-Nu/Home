@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Ecosystem Service Assessment of the Grand Canal in Hebei Province
+    </title>
+    <link rel="stylesheet" href="css/Page Margins.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/font.css" />
+    <link rel="stylesheet" href="css/background.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+
+      .content-section {
+        display: flex;
+        gap: 100px;
+        margin: 10px, 0;
+      }
+
+      .content-section img {
+        max-width: auto;
+        height: 75%;
+        border-radius: 60px;
+        margin-top: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      p {
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="../index.html">Homepage</a>
+      <a href="../services.html">News</a>
+      <a href="../Research.html">Project</a>
+      <a href="../Resume.html">Resume</a>
+      <a href="../services.html">Contact</a>
+    </nav>
+
+    <h1>Introduction</h1>
+    <pre class="custom-text">
+The Grand Canal in Hebei Province has a long history since the Eastern Han Dynasty.
+It plays an important role in transportation, local agriculture, flood defense, and landscape. 
+However, due to climate change and higher human impact, the flow and water quality have worsened, 
+eventually changing it into a seasonal river.
+
+In this study, we analyzed land use changes in the Grand Canal over the past 20 years 
+and predicted the land use pattern in 2035 under the environmental protection scenario based 
+on relevant policies. We conducted a spatiotemporal analysis of ecosystem service changes in the 
+Grand Canal Basin using the InVEST model and classified ecological function zones in 21 districts 
+and counties using self-organizing maps.
+  </pre
+    >
+
+    <h1>Analysis and Simulation of LULC</h1>
+    <div class="content-section">
+      <div>
+          <p class="custom-text">
+            Land use and land cover types reflect the natural landscape pattern
+            and human activity intensity in a local area. Changes in how humans
+            use and manage land may lead to changes in land cover, directly
+            affecting the ability of ecosystems to provide services and
+            products. We divided the land use types in the study area into
+            cultivated land, forest land, grassland, water area, construction
+            land, and unused land (mostly swamps). Additionally, we collected
+            data on temperature, population, GDP, urban planning, etc., in the
+            study area for many years and predicted the future land use pattern
+            under the environmental protection scenario through the PLUS
+            model.<br />
+            *Plus is a CA model combines a rule mining framework based on the
+            Land Expansion Analysis Strategy (LEAS) and the CA based on
+            multi-type random seeds (CARS) to find the drivers of land expansion
+            and landscape change.</br>
+            <a
+              href=" https://github.com/HPSCIL/Patch-generating_Land_Use_Simulation_Model"
+              >Invented by HPSCIL, China University of Geosciences (Wuhan)</a
+            >
+          </p>
+      </div>
+      <div>
+        <img src="../img/Landuse.png" alt="Land Use Map" />
+      </div>
+    </div>
+
+    <h1>Water Purification Services</h1>
+    <div class="content-section">
+    <p class="custom-text">
+      Water Purification services refers to the ability of different Land Cover
+      to retain the pollution by Vegetation. In this part, we utilized the
+      InVEST Model to analyze changes in water purification, as well as the
+      ecosystem's value. Moreover, to better understand the mechanism of this
+      service and the true contribution of each region, we employed
+      Self-Orgnazation-Map(SOM) to divide the 21 areas into several levels.<br>
+      The main progress is shown as the right figure. We estimated the Water 
+      Purification services of Hebei  Grand Canal Basin, and the service value was
+      calculated based on the treatment cost for each ton of pollutants. Then We 
+      tried to analyze the TN and TP output and retention of the region separately, 
+      and innovatively used SOM to classify the service functions in the study area. 
+      This will enable a better study of the relationship between industrial layout 
+      and regional ecological environment.  
+    </p>
+    <img src="/img/water purification.png" alt="training of SOM" style="width: 55%;height: auto;">
+  
+  </div>
+  </body>
+</html>

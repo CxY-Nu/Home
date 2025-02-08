@@ -1,0 +1,43 @@
+.keywords span {
+  font-family: "Times New Roman", Times, serif; /* 新罗马字体 */
+  font-weight: bold; /* 加粗 */
+  font-size: 24px;
+  line-height: 2.5; /* 行间距 */
+  white-space: nowrap; /* 禁止自动换行 */
+  position: relative;
+  padding-left: 30px; /* 给点缀留出空间 */
+}
+
+.keywords span::before {
+  content: "◆"; /* 添加点缀符号 */
+  color: #007acc; /* 点缀颜色 */
+  position: absolute;
+  left: 0; /* 定位到句首 */
+  top: 0;
+  font-size: 1.2em; /* 点缀大小 */
+  line-height: 1; /* 确保与文字对齐 */
+}
+.custom-text {
+  background-color: rgba(255, 255, 255, 0.5);
+  font-size: 18px; /* 字体大小 */
+  font-family: "timesnewroman", sans-serif; /* 字体类型 */
+  color: #000; /* 字体颜色 */
+  font-weight: normal; /* 字体粗细 */
+  font-style: italic; /* 字体样式 */
+  padding: 20px;
+  white-space: pre; /* Keeps formatting */
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  margin: 0px;
+  display: inline-block;
+  vertical-align: top;
+}
+h1 {
+  text-align: left;
+  font-size: 32px;
+  margin: 30;
+  color: #007bff;
+  text-transform: uppercase;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
