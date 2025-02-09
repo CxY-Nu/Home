@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sepcial page on DID</title>
+    <link rel="stylesheet" href="css/Page Margins.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/font.css" />
+    <link rel="stylesheet" href="css/background.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+
+      .content-section {
+        display: flex;
+        gap: 100px;
+        margin: 10px, 0;
+      }
+
+      .content-section img {
+        max-width: auto;
+        height: 75%;
+        border-radius: 0px;
+        margin-top: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      p {
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html">Homepage</a>
+      <a href="news.html">News</a>
+      <a href="Research.html">Project</a>
+      <a href="Resume.html">Resume</a>
+      <a href="news.html">Contact</a>
+    </nav>
+
+    <h1>Introduction</h1>
+    <div class="content-section">
+      <p class="custom-text">
+        DID, also called Diference in Differences. It's a popular method widely
+        be used in economics and social study.the biggest highlight is the
+        ability to eliminate the influence of time trend and difference between
+        groups find causal relationship.
+      </p>
+    </div>
+    <h1>Preparation</h1>
+    <div class="content-section">
+      <div>
+        <p class="custom-text">
+          The most famous case of DID is obviously the Study on Minimum wage in
+          New Jersey and Pennsylvania(Card & Krueger (1994) ). We will
+          demonstrate based on the results of this study 。All the code will be
+          runned in R 4.4.
+        </p>
+      </div>
+      <div>
+        <img src="img/DID_sam.png" />
+      </div>
+    </div>
+    <h1>PanelView</h1>
+    <div class="content-section">
+      <p class="custom-text">
+        panelView visualizes panel data. It has three main functionalities:<br />
+        1. it plots treatment status and missing values in a panel dataset; 2.
+        it plots the temporal dynamics of an outcome variable (or any variable)
+        in a panel dataset;<br />
+        3. it visualizes bivariate relationships of two variables by unit or in
+        aggregate.<br />
+        Attention: When using this package, please download the new version of R
+        tools, and make sure the function is like: panelview(outcome ~
+        treatment_status, ), the"v"The v must be lowercase, otherwise it may not
+        work properly. To download or for more information, please visit the
+        website:
+        <a href="https://yiqingxu.org/packages/panelview/" , target="_blank"
+          >https://yiqingxu.org/packages/panelview/</a
+        >
+      </p>
+      <img src="img/Panelview.png" style="width: 40%; height: 35%" />
+    </div>
+    <h1>Code and Results</h1>
+    <div class="content-section">
+      <p class="custom-text">
+        # Load packages library(tidyverse) library(haven) library(fixest)
+        library(ggplot2) library(panelView) # rd data df <-
+        read_dta("https://github.com/quarcs-lab/data-open/raw/master/other/cardkrueger1994v2.dta")
+        # data treatment df <- df %>% mutate( treated =
+        as.numeric(treatment_group), # (1=treated, 0=none) post =
+        as.numeric(time == 1), # (1=Nov,1992, 0=Feb,1992) treated_post = treated
+        * post ) panelview(outcome ~ treatment_status, data = df, index =
+        c("id","time"), xlab = "time", ylab = "unit", type = "treat", pre.post =
+        TRUE, by.timing = TRUE, cex.main = 20, cex.axis= 10, cex.lab = 12,
+        cex.legend = 12 ) #basic DID did_basic <- lm(outcome ~ treated + post +
+        treated_post, data = df) summary(did_basic) df %>% group_by(treated,
+        time) %>% summarise(mean_outcome = mean(outcome, na.rm = TRUE)) %>%
+        ggplot(aes(x = time, y = mean_outcome, color = factor(treated))) +
+        geom_line() + geom_point() + geom_vline(xintercept = 0.5, linetype =
+        "dashed") + # we assume that treated was started ar 0.5 labs(title =
+        "Parallel Trends Check", x = "Time (0=Feb 1992, 1=Nov 1992)", y =
+        "Outcome", color = "Treated Group") + theme_minimal()
+        -----------------------------------------------------<br />
+        Special thanks to&nbsp;<a
+          href="https://carlos-mendez.notion.site/Differences-in-differences-1c74e936f455414ca6cbb7e4703a483e"
+          target="_blank"
+          >Prof. Carlos Mendez form GSID, NU.</a
+        >
+        click here for more knowledge and codes in Stata
+      </p>
+      <img
+        src="img/DID_reuslt.png"
+        style="width: 35%; height: 50%; margin-left: -70px"
+      />
+    </div>
+  </body>
+</html>
