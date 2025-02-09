@@ -90,24 +90,56 @@
     </div>
     <h1>Code and Results</h1>
     <div class="content-section">
-      <p class="custom-text">
-        # Load packages library(tidyverse) library(haven) library(fixest)
-        library(ggplot2) library(panelView) # rd data df <-
-        read_dta("https://github.com/quarcs-lab/data-open/raw/master/other/cardkrueger1994v2.dta")
-        # data treatment df <- df %>% mutate( treated =
-        as.numeric(treatment_group), # (1=treated, 0=none) post =
-        as.numeric(time == 1), # (1=Nov,1992, 0=Feb,1992) treated_post = treated
-        * post ) panelview(outcome ~ treatment_status, data = df, index =
-        c("id","time"), xlab = "time", ylab = "unit", type = "treat", pre.post =
-        TRUE, by.timing = TRUE, cex.main = 20, cex.axis= 10, cex.lab = 12,
-        cex.legend = 12 ) #basic DID did_basic <- lm(outcome ~ treated + post +
-        treated_post, data = df) summary(did_basic) df %>% group_by(treated,
-        time) %>% summarise(mean_outcome = mean(outcome, na.rm = TRUE)) %>%
-        ggplot(aes(x = time, y = mean_outcome, color = factor(treated))) +
-        geom_line() + geom_point() + geom_vline(xintercept = 0.5, linetype =
-        "dashed") + # we assume that treated was started ar 0.5 labs(title =
-        "Parallel Trends Check", x = "Time (0=Feb 1992, 1=Nov 1992)", y =
-        "Outcome", color = "Treated Group") + theme_minimal()
+      <pre class="custom-text">
+        # Load required packages
+library(tidyverse)
+library(haven)
+library(fixest)
+library(ggplot2)
+library(panelView)
+
+# Load the data
+df <- read_dta("https://github.com/quarcs-lab/data-open/raw/master/other/cardkrueger1994v2.dta")
+
+# Data treatment
+df <- df %>%
+  mutate(
+    treated = as.numeric(treatment_group),  # (1 = treated, 0 = none)
+    post = as.numeric(time == 1),           # (1 = Nov, 1992, 0 = Feb, 1992)
+    treated_post = treated * post          # Interaction term for DID
+  )
+
+# Panel view for treatment effect visualization
+panelview(outcome ~ treatment_status, data = df, 
+          index = c("id", "time"), 
+          xlab = "time", 
+          ylab = "unit", 
+          type = "treat", 
+          pre.post = TRUE, 
+          by.timing = TRUE, 
+          cex.main = 20, 
+          cex.axis = 10, 
+          cex.lab = 12, 
+          cex.legend = 12)
+
+# Basic DID regression model
+did_basic <- lm(outcome ~ treated + post + treated_post, data = df)
+summary(did_basic)
+
+# Check parallel trends assumption
+df %>%
+  group_by(treated, time) %>%
+  summarise(mean_outcome = mean(outcome, na.rm = TRUE)) %>%
+  ggplot(aes(x = time, y = mean_outcome, color = factor(treated))) +
+  geom_line() +
+  geom_point() +
+  geom_vline(xintercept = 0.5, linetype = "dashed") +  # Assumes treated starts at 0.5
+  labs(title = "Parallel Trends Check", 
+       x = "Time (0 = Feb 1992, 1 = Nov 1992)", 
+       y = "Outcome", 
+       color = "Treated Group") + 
+  theme_minimal()
+
         -----------------------------------------------------<br />
         Special thanks to&nbsp;<a
           href="https://carlos-mendez.notion.site/Differences-in-differences-1c74e936f455414ca6cbb7e4703a483e"
@@ -115,7 +147,7 @@
           >Prof. Carlos Mendez form GSID, NU.</a
         >
         click here for more knowledge and codes in Stata
-      </p>
+      </pre>
       <img
         src="img/DID_reuslt.png"
         style="width: 35%; height: 50%; margin-left: -70px"
